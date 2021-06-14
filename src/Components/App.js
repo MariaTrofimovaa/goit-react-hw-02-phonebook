@@ -27,15 +27,13 @@ class App extends Component {
 
     const newContact = {
       id: uuidv4(),
-      name: name,
-      number: number,
+      name,
+      number,
       filter: this.state.filter,
     };
 
     this.setState((prevState) => ({
       contacts: [newContact, ...prevState.contacts],
-      name: "",
-      number: "",
       filter: "",
     }));
   };
@@ -47,10 +45,10 @@ class App extends Component {
 
   filterContacts = () => {
     const { contacts, filter } = this.state;
-    const filteredInput = filter.toLowerCase();
+    const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filteredInput)
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 

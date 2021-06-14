@@ -22,25 +22,13 @@ const ContactList = ({ filteredContacts, onDelete }) => {
 };
 
 ContactList.propTypes = {
-  filteredContacts: PropTypes.array.isRequired,
+  filteredContacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
   onDelete: PropTypes.func.isRequired,
 };
 
 export default ContactList;
-
-// ************** Почему не могу вынести в отдельный компонент? В ContactListItem консольбъет ошибку: onDelete is not a function
-
-// import React from "react";
-// import ContactListItem from "./contactListItem/ContactListItem";
-
-// const ContactList = ({ filteredContacts }) => {
-//   return (
-//     <ul>
-//       {filteredContacts.map((contact) => (
-//         <ContactListItem key={contact.id} contact={contact} />
-//       ))}
-//     </ul>
-//   );
-// };
-
-// export default ContactList;
